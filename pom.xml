@@ -42,7 +42,7 @@
         <maven.compiler.version>3.5.1</maven.compiler.version>
         <mybatis.version>3.3.0</mybatis.version>
         <perf4j.version>0.9.16</perf4j.version>
-        <curator.version>2.6.0</curator.version>
+        <curator.version>4.2.0</curator.version>
         <slf4j.version>1.7.2</slf4j.version>
         <druid.version>1.0.18</druid.version>
         <jackson-databind.version>2.9.6</jackson-databind.version>
@@ -50,7 +50,7 @@
         <commons-io.version>2.4</commons-io.version>
         <log4j.version>2.7</log4j.version>
         <mybatis-spring.version>1.2.5</mybatis-spring.version>
-        <spring-boot-dependencies.version>2.0.1.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.2.4.RELEASE</spring-boot-dependencies.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -145,11 +145,6 @@
                 <version>${log4j.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot</artifactId>
-                <version>2.0.3.RELEASE</version>
-            </dependency>
-            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
@@ -169,17 +164,31 @@
 
     <distributionManagement>
         <repository>
-            <id>rdc-releases</id>
-            <url>https://repo.rdc.aliyun.com/repository/30278-release-hOamJV/</url>
+            <id>gos-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2125488-release-BldixH/</url>
         </repository>
         <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <url>https://repo.rdc.aliyun.com/repository/30278-snapshot-k5cEXE/</url>
+            <id>gos-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2125488-snapshot-t8mClK/</url>
         </snapshotRepository>
     </distributionManagement>
     <build>
         <finalName>leaf</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

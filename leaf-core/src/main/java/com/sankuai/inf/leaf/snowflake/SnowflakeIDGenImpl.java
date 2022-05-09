@@ -58,7 +58,7 @@ public class SnowflakeIDGenImpl implements IDGen {
     }
 
     @Override
-    public synchronized Result get(String key) {
+    public synchronized Result get() {
         long timestamp = timeGen();
         if (timestamp < lastTimestamp) {
             long offset = lastTimestamp - timestamp;
@@ -92,6 +92,11 @@ public class SnowflakeIDGenImpl implements IDGen {
         long id = ((timestamp - twepoch) << timestampLeftShift) | (workerId << workerIdShift) | sequence;
         return new Result(id, Status.SUCCESS);
 
+    }
+
+    @Override
+    public Result get(String key) {
+        return null;
     }
 
     protected long tilNextMillis(long lastTimestamp) {

@@ -155,6 +155,11 @@ public class SegmentIDGenImpl implements IDGen {
         return new Result(EXCEPTION_ID_KEY_NOT_EXISTS, Status.EXCEPTION);
     }
 
+    @Override
+    public Result get() {
+        return null;
+    }
+
     public void updateSegmentFromDb(String key, Segment segment) {
         StopWatch sw = new Slf4JStopWatch();
         SegmentBuffer buffer = segment.getBuffer();
